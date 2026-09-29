@@ -54,7 +54,7 @@ contract Raffle {
         return s_recentWinner;
     }
 
-    receive() external payable{
+    receive() external payable {
         revert();
     }
 }

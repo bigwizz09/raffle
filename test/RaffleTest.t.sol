@@ -205,20 +205,18 @@ contract RaffleTest is Test {
     }
 
     function testDirectEthTransferReverts() public {
-
         vm.prank(Bob);
         vm.expectRevert();
 
-        payable(address(raffle)).transfer(raffleEntranceFee); 
+        payable(address(raffle)).transfer(raffleEntranceFee);
     }
 
-    function  testRecentWinnerIsUpdated() public {
+    function testRecentWinnerIsUpdated() public {
         vm.prank(Bob);
         raffle.enterRaffle{value: raffleEntranceFee}();
 
         raffle.pickWinner();
-        assertEq(raffle.getRecentWinner(),Bob);
-
+        assertEq(raffle.getRecentWinner(), Bob);
     }
 
     function testSamePlayerCanEnterMultipleRounds() public {
@@ -235,7 +233,6 @@ contract RaffleTest is Test {
 
         raffle.pickWinner();
         assertEq(raffle.getLengthOfPlayers(), 0);
-
     }
 }
 
